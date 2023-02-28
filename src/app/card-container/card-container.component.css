@@ -1,0 +1,69 @@
+:host {
+  display: flex;
+}
+.card-container {
+  align-self: flex-end;
+}
+
+.single-form-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid black;
+  background-color: #fff;
+  width: 200px;
+  height: 250px;
+  border-radius: 5px;
+}
+
+.single-form-middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.two-four-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.two-forms.right-corner {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+}
+
+.three-forms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+
+.left-corner-three-forms {
+  grid-row: 3 / 4;
+}
+
+.right-column-middle-three-forms {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.red {
+  color: #e03131;
+}
+.green {
+  color: #2f9e44;
+}
+.blue {
+  color: #1971c2;
+}
+.yellow {
+  color: #fcc419;
+}
