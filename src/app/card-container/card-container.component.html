@@ -1,9 +1,26 @@
 <div class="card-container">
-  <div class="card single-form-middle">
+  <div
+    class="card"
+    [ngClass]="{
+      'single-form-middle': randomCard.template?.length === 1,
+      'two-four-forms':
+        randomCard.template?.length === 2 || randomCard.template?.length === 4,
+      'three-forms': randomCard.template?.length === 3
+    }"
+  >
     <i
+      *ngFor="let item of randomCard.template; let index = index"
       class="{{ randomCard.colorOfForms }} fi fi-ss-{{
         randomCard.shapeOfForms
       }}"
+      [ngClass]="{
+        'two-forms-right-corner':
+          randomCard.template?.length === 2 && index === 1,
+        'left-corner-three-forms':
+          randomCard.template?.length === 3 && index === 1,
+        'right-column-middle-three-forms':
+          randomCard.template?.length === 3 && index === 2
+      }"
     ></i>
   </div>
 </div>
