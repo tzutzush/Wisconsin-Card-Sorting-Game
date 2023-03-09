@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from './card.model';
-import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class CardService {
   private shapes = ['circle', 'triangle', 'square', 'star'];
   private template = '';
 
-  randomCardObservable = new Observable<Card>();
+  randomCardSubject = new Subject<Card>();
   constructor() {}
 
   createStaticCards() {
@@ -30,22 +30,17 @@ export class CardService {
     );
     console.log(templates);
 
-    return new Card(
+    const randomCard = new Card(
       this.colors[this.getRandomNumber() - 1],
       numberOfShapes,
       this.shapes[this.getRandomNumber() - 1],
       templates
     );
+    this.randomCardSubject.next(randomCard);
+    return randomCard;
   }
 
   private getRandomNumber(): number {
     return Math.floor(Math.random() * 4) + 1;
   }
 }
-
-// function createRandomCard() {
-//   const formArray: never[] = [];
-//   const card = { color: 'red', number: 4, form: 'circle', forms: formArray };
-// }
-
-// const card = { color: 'red', number: 4, form: 'circle', forms: ['template'] };

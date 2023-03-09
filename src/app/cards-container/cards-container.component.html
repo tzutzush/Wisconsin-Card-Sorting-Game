@@ -2,20 +2,32 @@
   <div
     style="cursor: pointer"
     class="card single-form-middle"
-    (click)="onGuess()"
+    (click)="onGuess('red', 1, 'circle')"
   >
     <i class="red fi fi-ss-circle"></i>
   </div>
-  <div style="cursor: pointer" class="card two-four-forms" (click)="onGuess()">
+  <div
+    style="cursor: pointer"
+    class="card two-four-forms"
+    (click)="onGuess('green', 2, 'triangle')"
+  >
     <i class="green fi fi-ss-triangle"></i>
     <i class="green fi fi-ss-triangle two-forms right-corner"></i>
   </div>
-  <div style="cursor: pointer" class="card three-forms" (click)="onGuess()">
+  <div
+    style="cursor: pointer"
+    class="card three-forms"
+    (click)="onGuess('blue', 3, 'square')"
+  >
     <i class="blue fi fi-ss-square"></i>
     <i class="blue fi fi-ss-square right-column-middle-three-forms"></i>
     <i class="blue fi fi-ss-square left-corner-three-forms"></i>
   </div>
-  <div style="cursor: pointer" class="card two-four-forms" (click)="onGuess()">
+  <div
+    style="cursor: pointer"
+    class="card two-four-forms"
+    (click)="onGuess('yellow', 4, 'star')"
+  >
     <i class="yellow fi fi-ss-star"></i>
     <i class="yellow fi fi-ss-star"></i>
     <i class="yellow fi fi-ss-star"></i>
