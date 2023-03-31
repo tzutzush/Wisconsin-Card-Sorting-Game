@@ -2,6 +2,9 @@ import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Card } from './card.model';
 
+const CORRECT: string = 'Correct!';
+const WRONG: string = 'Wrong!';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,28 +13,31 @@ export class GameService {
   activeRule: string = '';
   turns: number = 0;
   gameStopper = new Subject<number>();
+  guessEvaluation = new Subject<string>();
   turnWhenRuleExpires = 0;
 
   constructor() {}
 
-  checkUserGuess(staticCard: Card, randomCard: Card): void {
+  checkUserGuess(staticCard: Card, randomCard: Card) {
     if (
       this.activeRule === 'color' &&
       staticCard.colorOfForms === randomCard.colorOfForms
     ) {
-      console.log('Good job!');
+      this.guessEvaluation.next(CORRECT);
     }
     if (
       this.activeRule === 'numberOfShapes' &&
       staticCard.numberOfShapes === randomCard.numberOfShapes
     ) {
-      console.log('Good job!');
+      this.guessEvaluation.next(CORRECT);
     }
     if (
       this.activeRule === 'shape' &&
       staticCard.shapeOfForms === randomCard.shapeOfForms
     ) {
-      console.log('Good job!');
+      this.guessEvaluation.next(CORRECT);
+    } else {
+      this.guessEvaluation.next(WRONG);
     }
   }
 

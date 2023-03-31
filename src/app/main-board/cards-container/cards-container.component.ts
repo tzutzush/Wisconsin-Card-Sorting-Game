@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from '../card.model';
-import { CardService } from '../card.service';
-import { GameService } from '../game.service';
+import { Card } from '../../card.model';
+import { CardService } from '../../card.service';
+import { GameService } from '../../game.service';
 
 @Component({
   selector: 'app-cards-container',
@@ -26,6 +26,8 @@ export class CardsContainerComponent implements OnInit {
   onGuess(staticCard: Card) {
     this.gameService.checkUserGuess(staticCard, this.randomCard);
     this.gameService.checkRuleExpiration();
-    this.cardService.createRandomCard();
+    setTimeout(() => {
+      this.cardService.createRandomCard();
+    }, 2000);
   }
 }
