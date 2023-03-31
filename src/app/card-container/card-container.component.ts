@@ -12,8 +12,9 @@ export class CardContainerComponent implements OnInit {
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-    this.randomCard = this.cardService.createRandomCard();
     this.cardService.randomCardSubject.subscribe((card) => {
+      console.log(card);
+
       this.randomCard = card;
     });
   }

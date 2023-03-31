@@ -2,10 +2,10 @@
   <div
     class="card"
     [ngClass]="{
-      'single-form-middle': randomCard.template?.length === 1,
+      'single-form-middle': randomCard.numberOfShapes === 1,
       'two-four-forms':
-        randomCard.template?.length === 2 || randomCard.template?.length === 4,
-      'three-forms': randomCard.template?.length === 3
+        randomCard.numberOfShapes === 2 || randomCard.numberOfShapes === 4,
+      'three-forms': randomCard.numberOfShapes === 3
     }"
   >
     <i

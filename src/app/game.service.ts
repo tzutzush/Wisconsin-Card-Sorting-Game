@@ -1,10 +1,11 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Card } from './card.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GameService implements OnChanges {
+export class GameService {
   rules: string[] = ['color', 'numberOfShapes', 'shape'];
   activeRule: string = '';
   turns: number = 0;
@@ -13,9 +14,26 @@ export class GameService implements OnChanges {
 
   constructor() {}
 
-  ngOnChanges(changes: SimpleChanges): void {}
-
-  checkUserGuess() {}
+  checkUserGuess(staticCard: Card, randomCard: Card) {
+    if (
+      this.activeRule === 'color' &&
+      staticCard.colorOfForms === randomCard.colorOfForms
+    ) {
+      console.log('Good job!');
+    }
+    if (
+      this.activeRule === 'numberOfShapes' &&
+      staticCard.numberOfShapes === randomCard.numberOfShapes
+    ) {
+      console.log('Good job!');
+    }
+    if (
+      this.activeRule === 'shape' &&
+      staticCard.shapeOfForms === randomCard.shapeOfForms
+    ) {
+      console.log('Good job!');
+    }
+  }
 
   checkRuleExpiration() {
     if (this.turns === this.turnWhenRuleExpires) {

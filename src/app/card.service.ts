@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from './card.model';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +37,7 @@ export class CardService {
       templates
     );
     this.randomCardSubject.next(randomCard);
-    return randomCard;
+    console.log(randomCard);
   }
 
   private getRandomNumber(): number {

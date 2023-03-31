@@ -10,6 +10,7 @@ import { GameService } from '../game.service';
 })
 export class CardsContainerComponent implements OnInit {
   staticCards: Card[] = [];
+  randomCard!: Card;
   constructor(
     private cardService: CardService,
     private gameService: GameService
@@ -17,9 +18,15 @@ export class CardsContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.staticCards = this.cardService.createStaticCards();
+    this.cardService.randomCardSubject.subscribe((card) => {
+      console.log(card);
+
+      this.randomCard = card;
+    });
   }
 
-  onGuess(color: string, numberOfShapes: number, shape: string) {
+  onGuess(staticCard: Card) {
+    this.gameService.checkUserGuess(staticCard, this.randomCard);
     this.gameService.checkRuleExpiration();
     this.cardService.createRandomCard();
   }
