@@ -39,6 +39,10 @@ export class GameService {
     } else {
       this.guessEvaluation.next(WRONG);
     }
+
+    setTimeout(() => {
+      this.guessEvaluation.next('');
+    }, 2000);
   }
 
   checkRuleExpiration() {
