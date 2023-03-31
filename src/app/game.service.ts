@@ -14,7 +14,7 @@ export class GameService {
 
   constructor() {}
 
-  checkUserGuess(staticCard: Card, randomCard: Card) {
+  checkUserGuess(staticCard: Card, randomCard: Card): void {
     if (
       this.activeRule === 'color' &&
       staticCard.colorOfForms === randomCard.colorOfForms

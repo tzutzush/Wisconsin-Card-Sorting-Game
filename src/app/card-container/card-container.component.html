@@ -1,12 +1,15 @@
 <div class="card-container">
+  <div class="card single-form-middle" *ngIf="randomCard.numberOfShapes === 1">
+    <i
+      *ngFor="let item of randomCard.template; let index = index"
+      class="{{ randomCard.colorOfForms }} fi fi-ss-{{
+        randomCard.shapeOfForms
+      }}"
+    ></i>
+  </div>
   <div
-    class="card"
-    [ngClass]="{
-      'single-form-middle': randomCard.numberOfShapes === 1,
-      'two-four-forms':
-        randomCard.numberOfShapes === 2 || randomCard.numberOfShapes === 4,
-      'three-forms': randomCard.numberOfShapes === 3
-    }"
+    class="card two-four-forms"
+    *ngIf="randomCard.numberOfShapes === 2 || randomCard.numberOfShapes === 4"
   >
     <i
       *ngFor="let item of randomCard.template; let index = index"
@@ -15,11 +18,19 @@
       }}"
       [ngClass]="{
         'two-forms-right-corner':
-          randomCard.template?.length === 2 && index === 1,
-        'left-corner-three-forms':
-          randomCard.template?.length === 3 && index === 1,
-        'right-column-middle-three-forms':
-          randomCard.template?.length === 3 && index === 2
+          randomCard.template?.length === 2 && index === 1
+      }"
+    ></i>
+  </div>
+  <div class="card three-forms" *ngIf="randomCard.numberOfShapes === 3">
+    <i
+      *ngFor="let item of randomCard.template; let index = index"
+      class="{{ randomCard.colorOfForms }} fi fi-ss-{{
+        randomCard.shapeOfForms
+      }}"
+      [ngClass]="{
+        'left-corner-three-forms': index === 1,
+        'right-column-middle-three-forms': index === 2
       }"
     ></i>
   </div>
