@@ -2,8 +2,8 @@ import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Subject, retry } from 'rxjs';
 import { Card } from './card.model';
 
-const CORRECT: string = 'Correct!';
-const WRONG: string = 'Wrong!';
+const CORRECT: string = 'CORRECT!';
+const WRONG: string = 'WRONG!';
 
 @Injectable({
   providedIn: 'root',
