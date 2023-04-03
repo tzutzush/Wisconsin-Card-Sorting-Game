@@ -16,3 +16,7 @@
   justify-items: center;
   align-items: center;
 }
+
+.random {
+  visibility: hidden;
+}
