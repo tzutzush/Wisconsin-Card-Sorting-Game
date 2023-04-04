@@ -1,2 +1,14 @@
-<div class="cards-container"></div>
-<h2 class="evaluation">{{ guessOutcome }}</h2>
+<div class="cards-container">
+  <div *ngFor="let card of cards; let index = index">
+    <div [ngClass]="{ random: index !== guessedCard }">
+      <app-random-card></app-random-card>
+    </div>
+  </div>
+</div>
+<div class="cards-container">
+  <div *ngFor="let card of cards; let index = index">
+    <h2 [ngClass]="{ evaluation: index !== guessedCard }">
+      {{ guessOutcome }}
+    </h2>
+  </div>
+</div>

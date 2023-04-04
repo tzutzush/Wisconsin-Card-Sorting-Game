@@ -23,8 +23,12 @@ export class CardsContainerComponent implements OnInit {
     });
   }
 
-  onGuess(staticCard: Card) {
-    this.gameService.checkUserGuess(staticCard, this.randomCard);
+  onGuess(staticCard: Card, staticCardIndex: number) {
+    this.gameService.checkUserGuess(
+      staticCard,
+      this.randomCard,
+      staticCardIndex
+    );
     this.gameService.checkRuleExpiration();
     setTimeout(() => {
       this.cardService.createRandomCard();
