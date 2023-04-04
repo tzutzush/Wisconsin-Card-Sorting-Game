@@ -2,14 +2,14 @@
   <div
     style="cursor: pointer"
     class="card single-form-middle"
-    (click)="onGuess(staticCards[0])"
+    (click)="onGuess(staticCards[0], 0)"
   >
     <i class="red fi fi-ss-circle"></i>
   </div>
   <div
     style="cursor: pointer"
     class="card two-four-forms"
-    (click)="onGuess(staticCards[1])"
+    (click)="onGuess(staticCards[1], 1)"
   >
     <i class="green fi fi-ss-triangle"></i>
     <i class="green fi fi-ss-triangle two-forms right-corner"></i>
@@ -17,7 +17,7 @@
   <div
     style="cursor: pointer"
     class="card three-forms"
-    (click)="onGuess(staticCards[2])"
+    (click)="onGuess(staticCards[2], 2)"
   >
     <i class="blue fi fi-ss-square"></i>
     <i class="blue fi fi-ss-square right-column-middle-three-forms"></i>
@@ -26,7 +26,7 @@
   <div
     style="cursor: pointer"
     class="card two-four-forms"
-    (click)="onGuess(staticCards[3])"
+    (click)="onGuess(staticCards[3], 3)"
   >
     <i class="yellow fi fi-ss-star"></i>
     <i class="yellow fi fi-ss-star"></i>

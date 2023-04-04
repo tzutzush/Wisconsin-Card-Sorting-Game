@@ -11,13 +11,16 @@ import { GameService } from 'src/app/game.service';
 export class EvaluationScreenComponent implements OnInit {
   guessOutcome: string = '';
   randomCard!: Card;
+  guessedCard!: number;
+  cards: string[] = new Array('first', 'second', 'third', 'fourth');
   constructor(
     private gameService: GameService,
     private cardService: CardService
   ) {}
   ngOnInit(): void {
     this.gameService.guessEvaluation.subscribe((value) => {
-      this.guessOutcome = value;
+      this.guessOutcome = value.evaluationText;
+      this.guessedCard = value.staticCardIndex;
     });
     this.cardService.randomCardSubject.subscribe((randomCard) => {
       this.randomCard = randomCard;
