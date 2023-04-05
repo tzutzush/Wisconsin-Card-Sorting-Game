@@ -8,6 +8,7 @@ import { CardsContainerComponent } from './main-board/cards-container/cards-cont
 import { EvaluationScreenComponent } from './main-board/evaluation-screen/evaluation-screen.component';
 import { MainBoardComponent } from './main-board/main-board.component';
 import { RandomCardComponent } from './random-card/random-card.component';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { RandomCardComponent } from './random-card/random-card.component';
     EvaluationScreenComponent,
     MainBoardComponent,
     RandomCardComponent,
+    OverlayComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

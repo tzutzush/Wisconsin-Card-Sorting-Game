@@ -16,6 +16,9 @@
         </button>
       </div>
     </div>
+    <div *ngIf="overlay">
+      <app-overlay></app-overlay>
+    </div>
     <div class="container" *ngIf="gameStarted">
       <app-card-container></app-card-container>
       <app-main-board></app-main-board>

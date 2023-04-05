@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   title = 'wcst';
   gameEnded: boolean = false;
   gameStarted: boolean = false;
+  overlay: boolean = false;
   constructor(
     private gameService: GameService,
     private cardService: CardService
@@ -25,5 +26,8 @@ export class AppComponent implements OnInit {
     this.gameService.gameStopper.subscribe((value) =>
       value === 60 ? (this.gameStarted = false) : (this.gameEnded = true)
     );
+    this.gameService.overlaySubject.subscribe((value) => {
+      this.overlay = value;
+    });
   }
 }

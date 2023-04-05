@@ -18,6 +18,7 @@ export class GameService {
   turns: number = 0;
   gameStopper = new Subject<number>();
   guessEvaluation = new Subject<guessEvaluation>();
+  overlaySubject = new Subject<boolean>();
   turnWhenRuleExpires = 0;
 
   constructor() {}

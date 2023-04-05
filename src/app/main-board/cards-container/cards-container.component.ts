@@ -9,6 +9,7 @@ import { GameService } from '../../game.service';
   styleUrls: ['./cards-container.component.css'],
 })
 export class CardsContainerComponent implements OnInit {
+  overlay: boolean = false;
   staticCards: Card[] = [];
   randomCard!: Card;
   constructor(
@@ -24,6 +25,7 @@ export class CardsContainerComponent implements OnInit {
   }
 
   onGuess(staticCard: Card, staticCardIndex: number) {
+    this.handleOverlay();
     this.gameService.checkUserGuess(
       staticCard,
       this.randomCard,
@@ -32,6 +34,13 @@ export class CardsContainerComponent implements OnInit {
     this.gameService.checkRuleExpiration();
     setTimeout(() => {
       this.cardService.createRandomCard();
+    }, 2000);
+  }
+
+  private handleOverlay() {
+    this.gameService.overlaySubject.next(true);
+    setTimeout(() => {
+      this.gameService.overlaySubject.next(false);
     }, 2000);
   }
 }
