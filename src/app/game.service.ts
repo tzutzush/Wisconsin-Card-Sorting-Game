@@ -24,10 +24,6 @@ export class GameService {
   constructor() {}
 
   checkUserGuess(staticCard: Card, randomCard: Card, staticCardIndex: number) {
-    console.log(`Active rule is ${this.activeRule}`);
-    console.log(`Turn when rule expires is ${this.turnWhenRuleExpires}`);
-    console.log(`Current turn is ${this.turns}`);
-
     if (
       this.activeRule === 'color' &&
       staticCard.colorOfForms === randomCard.colorOfForms
@@ -86,7 +82,7 @@ export class GameService {
       this.activeRule = inactiveRules[this.getRandomNumberForRule()];
     }
 
-    this.turnWhenRuleExpires = this.turns + 6;
+    this.turnWhenRuleExpires = this.turns + 7;
   }
 
   private getRandomNumberForRule(): number {

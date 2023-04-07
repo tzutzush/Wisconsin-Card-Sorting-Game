@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from './card.model';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +10,8 @@ export class CardService {
   private shapes = ['circle', 'triangle', 'square', 'star'];
   private template = '';
 
-  firstRandomCard: Card = new Card(
-    this.colors[this.getRandomNumber() - 1],
-    this.getRandomNumber(),
-    this.shapes[this.getRandomNumber() - 1]
-  );
+  firstRandomCard!: Card;
+
   randomCardSubject = new BehaviorSubject<Card>(this.firstRandomCard);
   constructor() {}
 
