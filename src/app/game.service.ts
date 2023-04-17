@@ -1,6 +1,7 @@
 import { Injectable, OnChanges, SimpleChanges } from '@angular/core';
 import { Subject, retry } from 'rxjs';
 import { Card } from './card.model';
+import { TimerService } from './timer.service';
 
 interface guessEvaluation {
   evaluationText: string;
@@ -21,38 +22,26 @@ export class GameService {
   overlaySubject = new Subject<boolean>();
   turnWhenRuleExpires = 0;
 
-  constructor() {}
+  constructor(private timerService: TimerService) {}
 
   checkUserGuess(staticCard: Card, randomCard: Card, staticCardIndex: number) {
     if (
       this.activeRule === 'color' &&
       staticCard.colorOfForms === randomCard.colorOfForms
     ) {
-      this.guessEvaluation.next({
-        evaluationText: CORRECT,
-        staticCardIndex: staticCardIndex,
-      });
+      this.forwardGuessEvaluation(staticCardIndex, 'CORRECT');
     } else if (
       this.activeRule === 'numberOfShapes' &&
       staticCard.numberOfShapes === randomCard.numberOfShapes
     ) {
-      this.guessEvaluation.next({
-        evaluationText: CORRECT,
-        staticCardIndex: staticCardIndex,
-      });
+      this.forwardGuessEvaluation(staticCardIndex, 'CORRECT');
     } else if (
       this.activeRule === 'shape' &&
       staticCard.shapeOfForms === randomCard.shapeOfForms
     ) {
-      this.guessEvaluation.next({
-        evaluationText: CORRECT,
-        staticCardIndex: staticCardIndex,
-      });
+      this.forwardGuessEvaluation(staticCardIndex, 'CORRECT');
     } else {
-      this.guessEvaluation.next({
-        evaluationText: WRONG,
-        staticCardIndex: staticCardIndex,
-      });
+      this.forwardGuessEvaluation(staticCardIndex, 'WRONG');
     }
     setTimeout(() => {
       this.guessEvaluation.next({
@@ -77,8 +66,6 @@ export class GameService {
       const inactiveRules: string[] = this.rules.filter(
         (rule) => this.activeRule !== rule
       );
-      console.log(inactiveRules);
-
       this.activeRule = inactiveRules[this.getRandomNumberForRule()];
     }
 
@@ -87,5 +74,18 @@ export class GameService {
 
   private getRandomNumberForRule(): number {
     return Math.floor(Math.random() * 2);
+  }
+
+  private forwardGuessEvaluation(
+    staticCardIndex: number,
+    evaluationText: 'CORRECT' | 'WRONG'
+  ) {
+    this.guessEvaluation.next({
+      evaluationText: evaluationText,
+      staticCardIndex: staticCardIndex,
+    });
+    if (evaluationText === 'CORRECT') {
+      this.timerService.calculateReactionTime();
+    }
   }
 }

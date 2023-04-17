@@ -9,6 +9,7 @@ import { EvaluationScreenComponent } from './main-board/evaluation-screen/evalua
 import { MainBoardComponent } from './main-board/main-board.component';
 import { RandomCardComponent } from './random-card/random-card.component';
 import { OverlayComponent } from './overlay/overlay.component';
+import { ResultDialogComponent } from './result-dialog/result-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { OverlayComponent } from './overlay/overlay.component';
     MainBoardComponent,
     RandomCardComponent,
     OverlayComponent,
+    ResultDialogComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

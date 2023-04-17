@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.gameService.gameStopper.subscribe((value) =>
-      value === 60 ? (this.gameStarted = false) : (this.gameEnded = true)
+      value === 60 ? (this.gameEnded = true) : (this.gameEnded = false)
     );
     this.gameService.overlaySubject.subscribe((value) => {
       this.overlay = value;
