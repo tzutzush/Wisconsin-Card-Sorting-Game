@@ -33,8 +33,6 @@ export class TimerService {
       ) /
         this.reactionTimeOfClicks.length +
       1;
-    console.log(value);
-
     this.reactionTimeAverage.next(value);
   }
 }
