@@ -9,6 +9,9 @@
     <title>WCST</title>
   </head>
   <body>
+    <div *ngIf="gameEnded">
+      <app-result-dialog></app-result-dialog>
+    </div>
     <div class="start-game" *ngIf="!gameStarted">
       <div>
         <button (click)="onStartGame()" type="button" class="start-game-button">
@@ -19,7 +22,7 @@
     <div *ngIf="overlay">
       <app-overlay></app-overlay>
     </div>
-    <div class="container" *ngIf="gameStarted">
+    <div class="container" *ngIf="gameStarted && !gameEnded">
       <app-card-container></app-card-container>
       <app-main-board></app-main-board>
     </div>

@@ -29,7 +29,6 @@ export class CardsContainerComponent implements OnInit {
 
   onGuess(staticCard: Card, staticCardIndex: number) {
     this.timerService.stopTimer();
-    this.timerService.calculateReactionTime();
     this.handleOverlay();
     this.gameService.checkUserGuess(
       staticCard,
