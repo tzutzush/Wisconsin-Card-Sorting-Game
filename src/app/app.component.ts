@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CardService } from './card.service';
 import { GameService } from './game.service';
+import { TimerService } from './timer.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
   overlay: boolean = false;
   constructor(
     private gameService: GameService,
-    private cardService: CardService
+    private cardService: CardService,
+    private timerService: TimerService
   ) {}
   onStartGame() {
     this.gameStarted = true;
@@ -23,9 +25,14 @@ export class AppComponent implements OnInit {
     this.gameService.checkRuleExpiration();
   }
   ngOnInit(): void {
-    this.gameService.gameStopper.subscribe((value) =>
-      value === 60 ? (this.gameEnded = true) : (this.gameEnded = false)
-    );
+    this.gameService.gameStopper.subscribe((value) => {
+      if (value === 5) {
+        this.gameEnded = true;
+        this.timerService.calculateReactionTimeAverage();
+      } else {
+        this.gameEnded = false;
+      }
+    });
     this.gameService.overlaySubject.subscribe((value) => {
       this.overlay = value;
     });

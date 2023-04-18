@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,7 @@ export class TimerService {
   timerStarted!: number;
   timerStopped!: number;
   reactionTimeOfClicks: number[] = [];
+  reactionTimeAverage = new Subject<number>();
 
   constructor() {}
 
@@ -22,5 +24,17 @@ export class TimerService {
     this.reactionTimeOfClicks.push(
       (this.timerStopped - this.timerStarted) / 1000
     );
+  }
+
+  calculateReactionTimeAverage(): void {
+    const value =
+      this.reactionTimeOfClicks.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+      ) /
+        this.reactionTimeOfClicks.length +
+      1;
+    console.log(value);
+
+    this.reactionTimeAverage.next(value);
   }
 }
