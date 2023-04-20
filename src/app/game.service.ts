@@ -7,8 +7,6 @@ interface guessEvaluation {
   evaluationText: string;
   staticCardIndex: number;
 }
-const CORRECT: string = 'CORRECT!';
-const WRONG: string = 'WRONG!';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TimerService } from '../timer.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-result-dialog',
@@ -7,11 +8,9 @@ import { TimerService } from '../timer.service';
   styleUrls: ['./result-dialog.component.css'],
 })
 export class ResultDialogComponent implements OnInit {
-  averageReactionTimeOfSuccessfulCLicks: any;
+  value$!: Observable<number>;
   constructor(private timerService: TimerService) {}
   ngOnInit(): void {
-    this.timerService.reactionTimeAverage.subscribe((value) => {
-      this.averageReactionTimeOfSuccessfulCLicks = value;
-    });
+    this.value$ = this.timerService.reactionTimeAverage.asObservable();
   }
 }
