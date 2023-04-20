@@ -3,7 +3,7 @@ import { CardService } from './card.service';
 import { GameService } from './game.service';
 import { TimerService } from './timer.service';
 
-const TURNS: number = 5;
+const TURNS: number = 60;
 
 @Component({
   selector: 'app-root',
