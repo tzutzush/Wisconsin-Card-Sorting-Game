@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +8,7 @@ export class TimerService {
   timerStarted!: number;
   timerStopped!: number;
   reactionTimeOfClicks: number[] = [];
-  reactionTimeAverage = new Subject<number>();
+  reactionTimeAverage = new BehaviorSubject<number>(0);
 
   constructor() {}
 

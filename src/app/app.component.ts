@@ -3,7 +3,7 @@ import { CardService } from './card.service';
 import { GameService } from './game.service';
 import { TimerService } from './timer.service';
 
-const TURNS: number = 60;
+const TURNS: number = 5;
 
 @Component({
   selector: 'app-root',
@@ -29,8 +29,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.gameService.gameStopper.subscribe((value) => {
       if (value === TURNS) {
-        this.gameEnded = true;
         this.timerService.calculateReactionTimeAverage();
+        this.gameEnded = true;
       } else {
         this.gameEnded = false;
       }
